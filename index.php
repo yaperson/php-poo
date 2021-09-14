@@ -13,7 +13,13 @@
 </html>
 <?php
 
-include "Personnage.php";
+// include "Personnage.php";
+
+function chargerClasse(string $classe){
+    include $classe . ".php";
+}
+
+spl_autoload_register('chargerClasse');
 
 // $perso = new Personnage();
 // $perso->parler();
