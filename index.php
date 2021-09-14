@@ -21,17 +21,23 @@ include "Personnage.php";
 // print("<div>XP = " . $perso->afficheExperience() . "</div>");
 
 $perso1 = new Personnage("ken", 100, 0);
-// $perso1->definirForce(200000000000);
-$perso1->setExperience(999999999999);
-
 $perso2 = new Personnage("vilain méchant pas gentil");
-// $perso2->definirForce(21);
+
+print("<div>".$perso1->setExperience(999999)->frapper($perso2)->getDegats() ."</div>");
 $perso2->setExperience(15);
 
-print("ken = ");
+print("ken dit = ");
 print($perso1->parler());
 $perso1->frapper($perso2);
 $perso2->frapper($perso1);
 
-print("<div> XP de ken = " . $perso1->afficheExperience() ."</div>");
-print("<div>XP du vilain méchant pas gentil = " . $perso2->afficheExperience() ."</div>");
+print("<div class='exp'> Stat de ".$perso1->getNom()." : 
+            <p>XP = " . $perso1->afficheExperience() ."
+            <br>FORCE = ". $perso1->getforce() ."
+            <br>DEGATS = ". $perso1->getDegats()."</p>
+        </div>");
+        print("<div class='exp'> Stat de ".$perso2->getNom()." : 
+            <p>XP = " . $perso2->afficheExperience() ."
+            <br>FORCE = ". $perso2->getforce() ."
+            <br>DEGATS = ". $perso2->getDegats()."</p>
+       </div>");

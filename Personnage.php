@@ -14,16 +14,17 @@ class Personnage
         $this->setExperience(1);
     }
 
-    public function __toString(){
+    public function __toString():string{
         return $this->getNom() . "(". $this->getDegats() .")";
     }
 
-    public function setNom($nom){
+    public function setNom(string $nom):Personnage{
         if (!is_string($nom)){
             trigger_error('Le nom d\'un personnage doit être un texte', E_USER_ERROR);
-            return;
+            return $this;
         }
         $this->_nom = $nom;
+        return $this;
     }
 
     
@@ -44,27 +45,30 @@ class Personnage
     }
 
     public function getforce(){
-        
+        return $this->_force;
     }
 
-    public function setExperience($_experience){
+    public function setExperience(int $_experience):Personnage{
         $this->_experience = $_experience;
+        return $this;
     }
 
-    public function gagnerExperience(){
+    public function gagnerExperience():Personnage{
         $this->_experience++;
+        return $this;
     }
 
     public function afficheExperience(){
         return $this->_experience;
     }
 
-    public function setDegats($degats){
+    public function setDegats($degats):Personnage{
         if (!is_int($degats)){
             trigger_error('Les dégats d\'un personnage doit être un nombre entier', E_USER_ERROR);
-            return;
+            return $this;
         }
         $this->_degats = $degats;
+        return $this;
     }
 
     public function getDegats(){
@@ -75,10 +79,15 @@ class Personnage
         print("Omae wa mō shindeiru.");
     }
 
-    public function frapper(Personnage $adversaire){
+    public function frapper(Personnage $adversaire):Personnage{
         // $adversaire->_degats += $this->_force; idem a :
-            $adversaire->_degats = $adversaire->_degats + $this->_force;
-            $this->gagnerExperience();
-            print('<div>'. $adversaire .'c\'est pris une mandale par ' . $this .' ==> Dégats de '. $adversaire . ' = '. $adversaire .'</div>');
+            if(get_class($adversaire) == "Personnage"){
+                $adversaire->_degats += $this ->_force;
+                $this->gagnerExperience();
+                print('<div class="action">'. $adversaire .'c\'est pris une mandale par ' . $this .' ==> Dégats de '. $adversaire . ' = '. $adversaire .'</div>');
+            } else {
+                print('FRéRO çA MARCHE PA LA !');
+            }
+            return $this;
     }
 }
