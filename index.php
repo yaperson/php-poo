@@ -29,6 +29,8 @@ spl_autoload_register('chargerClasse');
 $perso1 = new Personnage("ken", 100, 0);
 $perso2 = new Personnage("vilain méchant pas gentil");
 
+$perso3 = Personnage::FORCE_PETITE;
+
 print("<div>".$perso1->setExperience(999999)->frapper($perso2)->getDegats() ."</div>");
 $perso2->setExperience(15);
 
@@ -38,11 +40,13 @@ $perso1->frapper($perso2);
 $perso2->frapper($perso1);
 
 print("<div class='exp'> Stat de ".$perso1->getNom()." : 
+            <img src=Capture.png>
             <p>XP = " . $perso1->afficheExperience() ."
             <br>FORCE = ". $perso1->getforce() ."
             <br>DEGATS = ". $perso1->getDegats()."</p>
         </div>");
         print("<div class='exp'> Stat de ".$perso2->getNom()." : 
+            <img src=Capture2.png>
             <p>XP = " . $perso2->afficheExperience() ."
             <br>FORCE = ". $perso2->getforce() ."
             <br>DEGATS = ". $perso2->getDegats()."</p>

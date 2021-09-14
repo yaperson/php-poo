@@ -7,6 +7,10 @@ class Personnage
     private $_experience = 1;
     private $_degats = 0;
 
+    const FORCE_PETITE = 20;
+    const FORCE_MOYENNE = 50;
+    const FORCE_GRANDE = 80;
+
     public function __construct($nom, $force = 50, $degats = 0){
         $this->setNom($nom);
         $this->setForce($force);
@@ -32,16 +36,21 @@ class Personnage
         return $this->_nom;
     }
 
-    public function setForce($force){
+    public function setForce($force):Personnage{
         if (!is_int($force)){
             trigger_error('La force d\'un personnage doit être un nombre entier', E_USER_ERROR);
-            return;
+            return $this;
         }
         if ($force > 100){
             trigger_error('La force d\'un personnage ne doit pas dépasser 100', E_USER_ERROR);
-            return;
+            return $this;
         }
-        $this->_force = $force;
+        if (in_array($force, array(self::FORCE_PETITE, self::FORCE_MOYENNE, self::FORCE_GRANDE))){
+            $this->_force = $force;
+        } else{
+            trigger_error('LA FORCE N\'EST PAS CORRECTE ', E_USER_WARNING);
+        }
+        return $this;
     }
 
     public function getforce(){
