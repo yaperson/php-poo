@@ -11,11 +11,15 @@ class Personnage
     const FORCE_MOYENNE = 50;
     const FORCE_GRANDE = 80;
 
+    private static $_texteAdire = 'DO U TOKIGN TO ME ? JE vais Te faire bobo !';
+    private static $nbrPlayer = 0;
+
     public function __construct($nom, $force = 50, $degats = 0){
         $this->setNom($nom);
         $this->setForce($force);
         $this->setDegats($degats);
         $this->setExperience(1);
+        self::$nbrPlayer ++;
     }
 
     public function __toString():string{
@@ -48,7 +52,7 @@ class Personnage
         if (in_array($force, array(self::FORCE_PETITE, self::FORCE_MOYENNE, self::FORCE_GRANDE))){
             $this->_force = $force;
         } else{
-            trigger_error('LA FORCE N\'EST PAS CORRECTE ', E_USER_WARNING);
+            trigger_error('LA FORCE N\'EST PAS CORRECTE ', E_USER_ERROR);
         }
         return $this;
     }
@@ -84,8 +88,9 @@ class Personnage
         return $this->_degats;
     }
 
-    public function parler(){
-        print("Omae wa mō shindeiru.");
+    public static function parler(){
+        //print(self::$_texteAdire);// "JE vais Te faire bobo !");
+        print('<p> JE suis le n° '.self::$nbrPlayer.'</p>');
     }
 
     public function frapper(Personnage $adversaire):Personnage{
