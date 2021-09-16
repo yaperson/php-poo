@@ -29,6 +29,7 @@ class Personnage
             trigger_error("WTF C KOI CA !");
         }
         $this->_id = $_id;
+        return $this;
     }
 
     public function getId(){
@@ -40,6 +41,7 @@ class Personnage
             trigger_error("niveau doit etre un chiffre !");
         }
         $this->_niveau = $_niveau;
+        return $this;
     }
 
     public function getNiveau(){
@@ -90,7 +92,7 @@ class Personnage
         return $this;
     }
 
-    public function gagnerExperience():Personnage{
+    public function getExperience():Personnage{
         $this->_experience++;
         return $this;
     }
@@ -121,7 +123,7 @@ class Personnage
         // $adversaire->_degats += $this->_force; idem a :
             if(get_class($adversaire) == "Personnage"){
                 $adversaire->_degats += $this ->_force;
-                $this->gagnerExperience();
+                $this->getExperience();
                 print('<div class="action">'. $adversaire .'s\'est pris une mandale par ' . $this .' ==> Dégats de '. $adversaire . ' = '. $adversaire .'</div>');
             } else {
                 print('FRéRO çA MARCHE PA LA !');
