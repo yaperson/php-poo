@@ -2,7 +2,7 @@
 
 class Personnage
 {
-    private $_id = 0;
+    private $_id;
     private $_nom = 'Inconnu';
     private $_force = 50;
     private $_experience = 1;
@@ -22,6 +22,28 @@ class Personnage
         $this->setDegats($degats);
         $this->setExperience(1);
         self::$nbrPlayer ++;
+    }
+
+    public function setId(int $_id):Personnage {
+        if (!is_int($_id)){
+            trigger_error("WTF C KOI CA !");
+        }
+        $this->_id = $_id;
+    }
+
+    public function getId(){
+        return $this->_id;
+    }
+
+    public function setNiveau($_niveau):Personnage {
+        if (!is_int($_niveau)){
+            trigger_error("niveau doit etre un chiffre !");
+        }
+        $this->_niveau = $_niveau;
+    }
+
+    public function getNiveau(){
+        return $this->_niveau;
     }
 
     public function __toString():string{
