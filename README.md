@@ -6,9 +6,9 @@
 - Mettre a jour le fichier `conf.php` a partir de vos infos de connection à la BDD
 - `php -S localhost:8000`
 
-//
+___
 
-# JE DE LA CASTAGNE
+# GAME OF "LA CASTAGNE"
 
 ## Installation
 
