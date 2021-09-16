@@ -16,17 +16,26 @@ class Personnage
     private static $_texteAdire = 'DO U TOKIGN TO ME ? JE vais Te faire bobo !';
     private static $nbrPlayer = 0;
 
-    public function __construct($nom, $force = 50, $degats = 0){
-        $this->setNom($nom);
-        $this->setForce($force);
-        $this->setDegats($degats);
+    public function __construct(array $ligne){
+        $this->hydrate($ligne);
+        self::$nbrPlayer++;
+        print('<br> Le perso "' . $ligne['nom'] . '" est créé');
+    }
+
+    public function hydrate(array $ligne){
+        $this->setNom($ligne['nom']);
+        $this->setForce((int)$ligne['force']);
+        $this->setDegats((int)$ligne['degats']);
         $this->setExperience(1);
-        self::$nbrPlayer ++;
+    }
+
+    public function __toString():string{
+        return $this->getNom() . "(". $this->getDegats() .")";
     }
 
     public function setId(int $_id):Personnage {
         if (!is_int($_id)){
-            trigger_error("WTF C KOI CA !");
+            trigger_error("ERROR ERROR ERROR !");
         }
         $this->_id = $_id;
         return $this;
@@ -46,10 +55,6 @@ class Personnage
 
     public function getNiveau(){
         return $this->_niveau;
-    }
-
-    public function __toString():string{
-        return $this->getNom() . "(". $this->getDegats() .")";
     }
 
     public function setNom(string $nom):Personnage{
@@ -75,11 +80,11 @@ class Personnage
             trigger_error('La force d\'un personnage ne doit pas dépasser 100', E_USER_ERROR);
             return $this;
         }
-        if (in_array($force, array(self::FORCE_PETITE, self::FORCE_MOYENNE, self::FORCE_GRANDE))){
-            $this->_force = $force;
-        } else{
-            trigger_error('LA FORCE N\'EST PAS CORRECTE ', E_USER_ERROR);
-        }
+        // if (in_array($force, array(self::FORCE_PETITE, self::FORCE_MOYENNE, self::FORCE_GRANDE))){
+        //     $this->_force = $force;
+        // } else{
+        //     trigger_error('LA FORCE N\'EST PAS CORRECTE ', E_USER_ERROR);
+        // }
         return $this;
     }
 
@@ -126,7 +131,7 @@ class Personnage
                 $this->getExperience();
                 print('<div class="action">'. $adversaire .'s\'est pris une mandale par ' . $this .' ==> Dégats de '. $adversaire . ' = '. $adversaire .'</div>');
             } else {
-                print('FRéRO çA MARCHE PA LA !');
+                print('|  !! ERROR !!  |');
             }
             return $this;
     }

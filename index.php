@@ -27,10 +27,10 @@ try {
     $db = new PDO($dsn, $user, $pwd);
     if ($db){
         print('Lecture de la base de donnée :');
-        $request = $db->query('SELECT id, nom, `force`, degats, niveau, experience FROM perso');
+        $request = $db->query('SELECT id, nom, `force`, degats, niveau, experience FROM perso;');
         while ($ligne = $request->fetch(PDO::FETCH_ASSOC)) {
             $perso = new Personnage($ligne);
-            print(' ' . $perso->getNom() . $perso->getForce() . $perso->getDegats() . $perso->getExperience(). $perso->getNiveau() . ' ');
+            print('<br> <h3>' . $perso->getNom() . '</h3> <br> ça force est de : ' . $perso->getForce() . '<br> ses dégats sont : ' . $perso->getDegats() . '<br> son XP est :' . $perso->getExperience() . '<br> Il est niveau : ' . $perso->getNiveau() . ' <br> ');
         }
     }
 } catch (PDOException $e){
