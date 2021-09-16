@@ -1,4 +1,4 @@
-# JE DE LA CASTAGNE
+# JE D'LA CASTAGNE
 
 ## Installation
 
