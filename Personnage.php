@@ -98,7 +98,7 @@ class Personnage
             if(get_class($adversaire) == "Personnage"){
                 $adversaire->_degats += $this ->_force;
                 $this->gagnerExperience();
-                print('<div class="action">'. $adversaire .'c\'est pris une mandale par ' . $this .' ==> Dégats de '. $adversaire . ' = '. $adversaire .'</div>');
+                print('<div class="action">'. $adversaire .'s\'est pris une mandale par ' . $this .' ==> Dégats de '. $adversaire . ' = '. $adversaire .'</div>');
             } else {
                 print('FRéRO çA MARCHE PA LA !');
             }
