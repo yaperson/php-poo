@@ -2,10 +2,12 @@
 
 class Personnage
 {
+    private $_id = 0;
     private $_nom = 'Inconnu';
     private $_force = 50;
     private $_experience = 1;
     private $_degats = 0;
+    private $_niveau = 0;
 
     const FORCE_PETITE = 20;
     const FORCE_MOYENNE = 50;
