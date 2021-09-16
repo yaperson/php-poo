@@ -33,8 +33,8 @@ try {
             print(' ' . $perso->getNom() . $perso->getForce() . $perso->getDegats() . $perso->getExperience(). $perso->getNiveau() . ' ');
         }
     }
-} catch (){
-
+} catch (PDOException $e){
+    print($e->getMessage());
 }
 
 ?>
