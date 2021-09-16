@@ -28,7 +28,7 @@ class Personnage
         foreach($ligne as $key => $value){
             $method = 'set'.ucfirst($key);
             if (method_exists($this, $method)) {
-                $this->$method($value);
+                $this->$method($value); // on appel une methode qui est dans la variable donc on ajoute un $
             }
         }
     }
