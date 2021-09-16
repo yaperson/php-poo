@@ -16,24 +16,30 @@ class Personnage
     private static $_texteAdire = 'DO U TOKIGN TO ME ? JE vais Te faire bobo !';
     private static $nbrPlayer = 0;
 
-    public function __construct(array $ligne){
+    public function __construct(array $ligne)
+    {
         $this->hydrate($ligne);
         self::$nbrPlayer++;
         print('<br> Le perso "' . $ligne['nom'] . '" est créé');
     }
 
-    public function hydrate(array $ligne){
-        $this->setNom($ligne['nom']);
-        $this->setForce((int)$ligne['force']);
-        $this->setDegats((int)$ligne['degats']);
-        $this->setExperience(1);
+    public function hydrate(array $ligne)
+    {
+        foreach($ligne as $key => $value){
+            $method = 'set'.ucfirst($key);
+            if (method_exists($this, $method)) {
+                $this->$method($value);
+            }
+        }
     }
 
-    public function __toString():string{
+    public function __toString():string
+    {
         return $this->getNom() . "(". $this->getDegats() .")";
     }
 
-    public function setId(int $_id):Personnage {
+    public function setId(int $_id):Personnage 
+    {
         if (!is_int($_id)){
             trigger_error("ERROR ERROR ERROR !");
         }
@@ -45,7 +51,8 @@ class Personnage
         return $this->_id;
     }
 
-    public function setNiveau($_niveau):Personnage {
+    public function setNiveau($_niveau):Personnage 
+    {
         if (!is_int($_niveau)){
             trigger_error("niveau doit etre un chiffre !");
         }
