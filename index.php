@@ -15,13 +15,8 @@
 
 // include "Personnage.php";
 
-function chargerClasse(string $classe){
-    include $classe . ".php";
-}
 
-spl_autoload_register('chargerClasse');
-
-include "conf.php";
+include "header.php";
 
 try {
     $db = new PDO($dsn, $user, $pwd);
@@ -33,10 +28,9 @@ try {
     print('</br>Liste des personnages : ');
     foreach ($personnages as $personnage){
         // print('</br>' . $personnage->getNom());
-        print('<h3>' . $personnage->getNom() . ' : </h3><p class="exp"> ça force est de : ' . $personnage->getForce() . '<br> ses dégats sont : ' . $personnage->getDegats() . '<br> son XP est :' . $personnage->getExperience() . '<br> Il est niveau : ' . $personnage->getNiveau() .'</p>');
+        print('<h3> <a href="personnage_view.php?id='. $personnage->getId() .'">' . $personnage->getNom() . ' : </a></h3>');
 
     }
-
     // $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     // if ($db){
     //     print('Lecture de la base de donnée :');
@@ -46,6 +40,7 @@ try {
     //         print('<h3>' . $perso->getNom() . '</h3> ça force est de : ' . $perso->getForce() . '<br> ses dégats sont : ' . $perso->getDegats() . '<br> son XP est :' . $perso->getExperience() . '<br> Il est niveau : ' . $perso->getNiveau());
     //     }
     // }
+    // <p class="exp"> ça force est de : ' . $personnage->getForce() . '<br> ses dégats sont : ' . $personnage->getDegats() . '<br> son XP est :' . $personnage->getExperience() . '<br> Il est niveau : ' . $personnage->getNiveau() .'</p>');
 } catch (PDOException $e){
     print($e->getMessage());
 }

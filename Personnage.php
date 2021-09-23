@@ -34,7 +34,7 @@ class Personnage
 
     public function __toString():string
     {
-        return $this->getNom() . "(". $this->getDegats() .")";
+        return $this->getNom();
     }
 
     public function setId(int $_id):Personnage 
@@ -141,4 +141,5 @@ class Personnage
             }
             return $this;
     }
+
 }
