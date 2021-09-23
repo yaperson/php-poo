@@ -27,6 +27,12 @@ try {
     $db = new PDO($dsn, $user, $pwd);
 
     $personnageManager = new PersonnageManager($db);
+    $personnages = $personnageManager->getList();
+
+    print('</br>Liste des personnages : ');
+    foreach ($personnages as $personnage){
+        print('</br>' . $personnage->getNom());
+    }
 
     // $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     // if ($db){
