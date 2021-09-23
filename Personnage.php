@@ -20,7 +20,6 @@ class Personnage
     {
         $this->hydrate($ligne);
         self::$nbrPlayer++;
-        print('<br> Le perso "' . $ligne['nom'] . '" est créé');
     }
 
     public function hydrate(array $ligne)

@@ -25,13 +25,16 @@ include "conf.php";
 
 try {
     $db = new PDO($dsn, $user, $pwd);
-
+    $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+    
     $personnageManager = new PersonnageManager($db);
     $personnages = $personnageManager->getList();
 
     print('</br>Liste des personnages : ');
     foreach ($personnages as $personnage){
-        print('</br>' . $personnage->getNom());
+        // print('</br>' . $personnage->getNom());
+        print('<h3>' . $personnage->getNom() . ' : </h3><p class="exp"> ça force est de : ' . $personnage->getForce() . '<br> ses dégats sont : ' . $personnage->getDegats() . '<br> son XP est :' . $personnage->getExperience() . '<br> Il est niveau : ' . $personnage->getNiveau() .'</p>');
+
     }
 
     // $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
