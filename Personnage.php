@@ -1,17 +1,25 @@
 <?php
 
-class Personnage
+abstract class Personnage
 {
     private $_id;
     private $_nom = 'Inconnu';
-    private $_force = 50;
+    protected $_force = 50;
     private $_experience = 1;
     private $_degats = 0;
     private $_niveau = 0;
+    private $_classe = 0;
 
     const FORCE_PETITE = 20;
     const FORCE_MOYENNE = 50;
     const FORCE_GRANDE = 80;
+
+    const PNJ = 0;
+    const MAGICIEN = 1;
+    const ARCHER = 2;
+    const BRUTE = 3;
+    const GUERRIER = 4;
+    const MAMA = 5;
 
     private static $_texteAdire = 'DO U TOKIGN TO ME ? JE vais Te faire bobo !';
     private static $nbrPlayer = 0;

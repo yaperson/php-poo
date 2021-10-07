@@ -1,6 +1,6 @@
 <?php
 
-class Magicien extends Personnage {
+class Mama extends Personnage {
     private $_magie;
     public function lancerUnSort(Personnage $adversaire): Personnage
     {
