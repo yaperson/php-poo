@@ -35,10 +35,28 @@ class PersonnageManager
     public function getOne(int $id)
     {
         
-        $sth = $this->_db->prepare('SELECT nom, `force`, degats, niveau, experience, classe FROM perso WHERE id = ?;');
-        $sth->execute(array($id));
-        $ligne = $sth->fetch();
-        $perso = new Personnage($ligne);
+        $request = $this->_db->prepare('SELECT nom, `force`, degats, niveau, experience, classe FROM perso WHERE id = ?;');
+        $request->execute(array($id));
+        $ligne = $request->fetch();
+        switch((int)$ligne['classe']){
+            case Personnage::MAGICIEN:
+                $perso = new Magicien($ligne);
+                break;
+            case Personnage::ARCHER:
+                $perso = new Archer($ligne);
+                break;
+            case Personnage::BRUTE:
+                $perso = new Brute($ligne);
+                break;
+            case Personnage::GUERRIER:
+                $perso = new Guerrier($ligne);
+                break;
+            case Personnage::MAMA:
+                $perso = new Mama($ligne);
+                break;
+            default:
+                break;
+        }
         return $perso;
     }
     

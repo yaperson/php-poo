@@ -29,7 +29,8 @@ try {
     foreach ($personnages as $personnage){
         // print('</br>' . $personnage->getNom());
         print('<h3> <a href="personnage_view.php?id='. $personnage->getId() .'">' . $personnage->getNom() . ' : </a></h3>');
-
+        $combat = new Ring();
+        $combat->lancerCombat($personnage->getOne(), $personnage->getOne());
     }
     // $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     // if ($db){

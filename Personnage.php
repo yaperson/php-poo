@@ -138,16 +138,7 @@ abstract class Personnage
         print('<p> JE suis le n° '.self::$nbrPlayer.'</p>');
     }
 
-    public function frapper(Personnage $adversaire):Personnage{
-        // $adversaire->_degats += $this->_force; idem a :
-            if(get_class($adversaire) == "Personnage"){
-                $adversaire->_degats += $this ->_force;
-                $this->getExperience();
-                print('<div class="action">'. $adversaire .'s\'est pris une mandale par ' . $this .' ==> Dégats de '. $adversaire . ' = '. $adversaire .'</div>');
-            } else {
-                print('|  !! ERROR !!  |');
-            }
-            return $this;
-    }
+    abstract function frapper(Personnage $adversaire):Personnage;
+
 
 }
