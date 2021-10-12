@@ -1,7 +1,6 @@
 <?php
 
-final class GitanVoleur extends Personnage implements Voleur {
-
+class BruteVoleur extends Personnage implements Voleur {
     public function recel(Personnage $adversaire, int $butinAquis){
         $this->setPoche($this->getPoche() + $butinAquis);
         $adversaire->setPoche($adversaire->getPoche() - $butinAquis);
@@ -16,6 +15,6 @@ final class GitanVoleur extends Personnage implements Voleur {
     }
     public function insulter()
     {
-        print("</br>".$this->getNom()." : LE SANG DSé MOOORT ! LE DJO !, TIEN 20 BALLE En MOAIN FILS DE PUTE DSé MOOOORT !");
+        print("</br>".$this->getNom()." : La BAGUAARE !!");
     }
 }

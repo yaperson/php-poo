@@ -10,6 +10,6 @@ class Mama extends Personnage {
     }
     public function insulter()
     {
-        print("</br> AAAYAYAYAYAYYAYAAAAAA !");
+        print("</br>".$this->getNom()." : AAAYAYAYAYAYYAYAAAAAA !");
     }
 }

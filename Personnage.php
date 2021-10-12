@@ -44,10 +44,10 @@ abstract class Personnage
     public function __toString():string
     {
         return $this->getNom() .
-        "/ force =" . $this->getforce().
-        "/ class =" . $this->getClass().
-        "/ id =" . $this->getId().
-        "/poches =". $this->getPoche();
+        " | force = " . $this->getforce().
+        " | class = " . $this->getClass().
+        " | id = " . $this->getId().
+        " | poches = ". $this->getPoche();
     }
 
     public function setId(int $_id):Personnage 

@@ -10,6 +10,6 @@ final class Archer extends Personnage {
 
     public function insulter()
     {
-        print("</br> Tu vise comme ma grand mère ! ");
+        print("</br>".$this->getNom()." : Tu vise comme ma grand mère ! ");
     }
 }

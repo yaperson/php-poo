@@ -52,6 +52,12 @@ try {
         'nom' => 'Lopez',
         'force' => 29
     ]);
+    $perso5 = new BruteVoleur([
+        'class' => "Brute",
+        'id' => 13,
+        'nom' => 'Jacky',
+        'force' => 39
+    ]);
 
     print('</br>Liste des personnages : </br>');
 
@@ -59,6 +65,7 @@ try {
     $combat->lancerCombat($perso1, $perso2);
     $combat->lancerCombat($perso3, $perso2);
     $combat->lancerCombat($perso2, $perso4);
+    $combat->lancerCombat($perso5, $perso4);
     
     // foreach ($personnages as $personnage){
     //     // print('</br>' . $personnage->getNom());

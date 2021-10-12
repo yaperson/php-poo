@@ -9,6 +9,6 @@ class Guerrier extends Personnage {
     }
     public function insulter()
     {
-        print("</br> DO U TOKIGN TO ME ? JE vais Te faire bobo !");
+        print("</br>".$this->getNom()." : DO U TOKIGN TO ME ? JE vais Te faire bobo !");
     }
 }

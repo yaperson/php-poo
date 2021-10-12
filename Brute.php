@@ -9,6 +9,6 @@ class Brute extends Personnage {
     }
     public function insulter()
     {
-        print("</br> La BAGUAARE !!");
+        print("</br>".$this->getNom()." : La BAGUAARE !!");
     }
 }

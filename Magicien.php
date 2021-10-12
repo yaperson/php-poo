@@ -10,7 +10,7 @@ class Magicien extends Personnage {
     }
     public function insulter()
     {
-        print("</br>  Lorem ipsum dolor sit amet, consectetur adipiscing elit !");
+        print("</br>".$this->getNom()." :  Lorem ipsum dolor sit amet, consectetur adipiscing elit !");
         print("</br>  comprennez, parler latin donne vraiment un style de magicien :)");
     }
 }
