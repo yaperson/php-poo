@@ -2,10 +2,14 @@
 
 class Mama extends Personnage {
     private $_magie;
-    public function frapper(Personnage $adversaire): Personnage
+    public function attaquer(Personnage $adversaire): Personnage
     {
-        $adversaire->_degats+=$this->_magie;
-        parent::frapper($adversaire);
+        $adversaire->setDegats($adversaire->getDegats() + $this->_force);
+        // parent::attaquer($adversaire);
         return $this;
+    }
+    public function insulter()
+    {
+        print("</br> AAAYAYAYAYAYYAYAAAAAA !");
     }
 }

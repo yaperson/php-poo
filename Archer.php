@@ -1,10 +1,15 @@
 <?php
 
-class Archer extends Personnage {
-    public function frapper(Personnage $adversaire): Personnage
+final class Archer extends Personnage {
+    public function attaquer(Personnage $adversaire): Personnage
     {
-        $adversaire->_degats+=$this->_magie;
-        parent::frapper($adversaire);
+        $adversaire->setDegats($adversaire->getDegats() + $this->_force);
+        //parent::frapper($adversaire);
         return $this;
+    }
+
+    public function insulter()
+    {
+        print("</br> Tu vise comme ma grand mère ! ");
     }
 }

@@ -25,13 +25,47 @@ try {
     $personnageManager = new PersonnageManager($db);
     $personnages = $personnageManager->getList();
 
-    print('</br>Liste des personnages : ');
-    foreach ($personnages as $personnage){
-        // print('</br>' . $personnage->getNom());
-        print('<h3> <a href="personnage_view.php?id='. $personnage->getId() .'">' . $personnage->getNom() . ' : </a></h3>');
-        $combat = new Ring();
-        $combat->lancerCombat($personnage->getOne(), $personnage->getOne());
-    }
+    $perso1 = new Archer([
+        'class' => 2,
+        'id' => 9,
+        'nom' => 'Akim',
+        'force' => 25,
+        'poche' => 50
+    ]);
+    $perso2 = new Guerrier([
+        'class' => 4,
+        'id' => 10,
+        'nom' => 'JP',
+        'force' => 27, 
+        'poche' => 52
+    ]);
+    $perso3 = new Mama([
+        'class' => 5,
+        'id' => 11,
+        'nom' => 'Malika',
+        'force' => 99,
+        'poche' => 30
+    ]);
+    $perso4 = new GitanVoleur([
+        'class' => "Gitan",
+        'id' => 12,
+        'nom' => 'Lopez',
+        'force' => 29
+    ]);
+
+    print('</br>Liste des personnages : </br>');
+
+    $combat = new Ring();
+    $combat->lancerCombat($perso1, $perso2);
+    $combat->lancerCombat($perso3, $perso2);
+    $combat->lancerCombat($perso2, $perso4);
+    
+    // foreach ($personnages as $personnage){
+    //     // print('</br>' . $personnage->getNom());
+    //     print('<h3> <a href="personnage_view.php?id='. $personnage->getId() .'">' . $personnage->getNom() . ' : </a></h3>');
+    //     $combat = new Ring();
+    //     $combat->lancerCombat($personnage, $personnage);
+    // }
     // $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     // if ($db){
     //     print('Lecture de la base de donnée :');

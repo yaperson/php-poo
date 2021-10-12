@@ -9,6 +9,7 @@ abstract class Personnage
     private $_degats = 0;
     private $_niveau = 0;
     private $_classe = 0;
+    private $_poches = 0;
 
     const FORCE_PETITE = 20;
     const FORCE_MOYENNE = 50;
@@ -21,7 +22,7 @@ abstract class Personnage
     const GUERRIER = 4;
     const MAMA = 5;
 
-    private static $_texteAdire = 'DO U TOKIGN TO ME ? JE vais Te faire bobo !';
+    // private static $_texteAdire = 'DO U TOKIGN TO ME ? JE vais Te faire bobo !';
     private static $nbrPlayer = 0;
 
     public function __construct(array $ligne)
@@ -30,7 +31,7 @@ abstract class Personnage
         self::$nbrPlayer++;
     }
 
-    public function hydrate(array $ligne)
+    final public function hydrate(array $ligne)
     {
         foreach($ligne as $key => $value){
             $method = 'set'.ucfirst($key);
@@ -42,7 +43,11 @@ abstract class Personnage
 
     public function __toString():string
     {
-        return $this->getNom();
+        return $this->getNom() .
+        "/ force =" . $this->getforce().
+        "/ class =" . $this->getClass().
+        "/ id =" . $this->getId().
+        "/poches =". $this->getPoche();
     }
 
     public function setId(int $_id):Personnage 
@@ -79,10 +84,32 @@ abstract class Personnage
         $this->_nom = $nom;
         return $this;
     }
-
     
     public function getNom(){
         return $this->_nom;
+    }
+
+    public function getClass(){
+        return $this->_classe;
+    }
+
+    public function setClass(string $classe){
+        if (in_array($classe, array(self::PNJ, self::MAGICIEN, self::ARCHER, self::BRUTE, self::GUERRIER, self::MAMA))){
+            $this->_classe = $classe;
+        } else{
+            trigger_error('LA CLASSE N\'EST PAS CORRECTE ', E_USER_ERROR);
+        }
+        $this->_classe = $classe;
+        return $this;
+    }
+
+    public function getPoche(){
+        return $this->_poches;
+    }
+
+    public function setPoche(int $_poches):Personnage{
+        $this->_poches = $_poches;
+        return $this;
     }
 
     public function setForce($force):Personnage{
@@ -99,6 +126,7 @@ abstract class Personnage
         // } else{
         //     trigger_error('LA FORCE N\'EST PAS CORRECTE ', E_USER_ERROR);
         // }
+        $this->_force = $force;
         return $this;
     }
 
@@ -138,7 +166,10 @@ abstract class Personnage
         print('<p> JE suis le n° '.self::$nbrPlayer.'</p>');
     }
 
-    abstract function frapper(Personnage $adversaire):Personnage;
+    abstract function attaquer(Personnage $adversaire):Personnage;
 
+    public function insulter(){
+        print("Tete de gland ! </br>");
+    }
 
 }
